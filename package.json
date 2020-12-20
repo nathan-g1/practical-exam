@@ -2,10 +2,10 @@
   "name": "practical-exam",
   "version": "1.0.0",
   "description": "Gebeya API practical Exam (Example: NODE.JS)",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
     "test": "test",
-    "start": "npm ./server/index.js"
+    "start": "node ./server/index.js"
   },
   "repository": {
     "type": "git",
