@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
-const Item = mongoose.Schema({
+const ItemSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        default: 'new Item'
     },
     price: {
         type: Number,
-        required: true
+        required: true,
+        default: 1230
     },
     model: {
         type: String,
@@ -25,8 +27,15 @@ const Item = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    vendorName: {
+        type: String,
+        required: false
     }
 });
 
-module.exports = mongoose.model('Item', Item);
-
+module.exports = mongoose.model('Items', ItemSchema);
