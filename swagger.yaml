@@ -1,0 +1,98 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Ecommerce API
+  summary: Documentation for Gebeya API practical Exam (Example, NODE.JS)
+basePath: /api
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /users/login:
+      get:
+        tags:
+          - Users
+        summary: Get all items
+        operationId: users.login
+        consumes:
+          - application/json
+          - application/xml
+        parameters:
+          - name: body
+            in: body
+            required: true
+            type: string
+            schema:
+              $ref: '#/definitions/Pet'
+        responses:
+          '200':
+            description: Request was successful
+            schema:
+              type: object
+          undefined:
+            description: Unknown error
+        deprecated: false
+  /items/all/{page}:
+    get:
+      tags:
+        - Items
+      summary: Get all items
+      operationId: items.all.page
+      parameters:
+        - name: page
+          in: path
+          required: true
+          type: string
+        - name: Authorizatiton
+          in: header
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/x-any'
+            type: object
+        undefined:
+          description: Unknown error
+      security:
+        - petstore_auth:
+        
+      deprecated: false
+  /items/detail/{itemId}:
+    get:
+      tags:
+        - Items
+      summary: Get detailed info on a single item
+      operationId: Item.detail
+      parameters: []
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+        undefined:
+          description: Unknown error
+      deprecated: false    
+User:
+    type: object
+    required:
+      - username
+      - password
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        example: usera
+      status:
+        type: string
+        description: user
+    xml:
+      name: User
